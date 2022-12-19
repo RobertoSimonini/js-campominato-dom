@@ -49,6 +49,7 @@ function createCell (content) {
     } else {
         cell.classList.add('cell');
     }
+
     cell.append(content)
     grid.appendChild(cell);
     return cell;
@@ -78,10 +79,9 @@ btnPlay.addEventListener ('click', function(){
 
     // Aggiungo la classe al grid così da creare il container per il campo minato
     grid.classList.add('grid');
-    
-    // do la possibilità di restartare senza creare una griglia sotto l'altra
-    grid.innerHTML = '';
 
+    grid.innerHTML = '';
+    
     // Prendo il value della select 
     userChoice = select.value;
     
@@ -91,7 +91,7 @@ btnPlay.addEventListener ('click', function(){
     } else if (userChoice === 'hard') {
         totalCells = 49;
     }
-    
+
     // Creo il ciclo per creare i 16 numeri
     for (let j = 1; j <= 16; j++) {
         bombsArray.push(getUniqueRandomBomb())
@@ -104,24 +104,25 @@ btnPlay.addEventListener ('click', function(){
         const cell = createCell (i);
         
         cell.addEventListener ('click', function(){
-            cell.classList.toggle('bg-sky-blue');
+            cell.classList.add('bg-sky-blue');
             console.log(i);
 
             // Creo le condizioni per trasformare le celle in bombe 
             if (bombsArray.includes(i)) {
-                cell.classList.toggle('bg-red');
+                cell.classList.add('bg-red');
             }
 
             // Aggiungo la cella cliccata all'array dell'utente 
             userScore.push(i);
 
             if (cell.classList.contains('bg-red')) {
-                alert (`Hai perso, hai schiacciato una bomba, il tuo risultato è ${userScore.length - 1}`);
+                alert (`Hai perso, hai schiacciato una bomba, il tuo punteggio è ${userScore.length - 1}`);
                 return;
+                
             } else if (userScore.length === (totalCells - bombsArray.length)) {
-                alert (`Complimenti hai vinto!! il tuo risultato è ${userScore.length}`)
+                alert (`Complimenti hai vinto!! il tuo punteggio è ${userScore.length}`)
+                return;
             }
         });
     };
 });
-
