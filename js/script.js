@@ -68,10 +68,7 @@ function getUniqueRandomBomb () {
 }
 
 // Creo un array dove metterò le 16 bombe
-const bombsArray = []
-
-
-console.log(bombsArray);
+const bombsArray = [];
 
 // Aggiungo l'even listener al bottone 
 btnPlay.addEventListener ('click', function(){
@@ -87,22 +84,29 @@ btnPlay.addEventListener ('click', function(){
     } else if (userChoice === 'hard') {
         totalCells = 49;
     }
-
+    
     // Creo il ciclo per creare i 16 numeri
-    for (j = 1; j <= 16; j++) {
+    for (let j = 1; j <= 16; j++) {
         bombsArray.push(getUniqueRandomBomb())
     };
-
+    
     for (let i = 1; i <= totalCells; i++) {
-
-        // Aggiungo la funzione che crei le celle e le appena nella griglia 
+        
+        // Aggiungo la funzione che crei le celle e le appenda nella griglia 
         const cell = createCell (i);
-
+        
         cell.addEventListener ('click', function(){
             cell.classList.toggle('bg-sky-blue');
+            console.log(i);
+            
+            if (bombsArray.includes(i)) {
+                cell.classList.toggle('bg-red');
+            }
+
             // Aggiungo la cella cliccata all'array dell'utente 
             userScore.push(i);
         });
     };
 });
 
+console.log(bombsArray);
