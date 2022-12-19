@@ -90,6 +90,7 @@ btnPlay.addEventListener ('click', function(){
         bombsArray.push(getUniqueRandomBomb())
     };
     
+    // Creo il ciclo per creare le celle e le bombe 
     for (let i = 1; i <= totalCells; i++) {
         
         // Aggiungo la funzione che crei le celle e le appenda nella griglia 
@@ -98,13 +99,19 @@ btnPlay.addEventListener ('click', function(){
         cell.addEventListener ('click', function(){
             cell.classList.toggle('bg-sky-blue');
             console.log(i);
-            
+
+            // Creo le condizioni per trasformare le celle in bombe 
             if (bombsArray.includes(i)) {
                 cell.classList.toggle('bg-red');
             }
 
             // Aggiungo la cella cliccata all'array dell'utente 
             userScore.push(i);
+
+            if (cell.classList.contains('bg-red')) {
+                alert (`Hai perso, hai schiacciato una bomba, il tuo risultato è ${userScore.length}`);
+                return;
+            }
         });
     };
 });
