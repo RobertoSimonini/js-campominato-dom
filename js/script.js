@@ -1,10 +1,15 @@
 /*
 ! CONSEGNA
 Copiamo la griglia fatta ieri nella nuova repo e aggiungiamo la logica del gioco (attenzione: :avviso:non bisogna copiare tutta la cartella dell'esercizio ma solo l'index.html, e le cartelle js/ css/ con i relativi script e fogli di stile, per evitare problemi con l'inizializzazione di git).
+
 Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. Attenzione: nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali.
+
 In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+
 La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
+
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
+
 # MILESTONE 1
 Prepariamo "qualcosa" per tenere il punteggio dell'utente.
 Quando l'utente clicca su una cella, incrementiamo il punteggio.
@@ -23,13 +28,15 @@ Quando la partita termina dobbiamo capire se è terminata perchè è stata clicc
 
 // ******************************************************************************** //
 
+
+
+
 // Prendo gli elementi dal DOM 
 const btnPlay = document.getElementById('play');
 const grid = document.getElementById('grid');
 const select = document.getElementById('userChoice')
 // Aggiungo le impostazioni affinchè possa creare la griglia 
 let totalCells = 100;
-
 
 
 // # Creo una funzione che mi permetta di creare le celle all'interno della grid
@@ -46,6 +53,9 @@ function createCell (content) {
     grid.appendChild(cell);
     return cell;
 }
+
+// Creo un array che contenga il punteggio dell'utente 
+const userScore = [];
 
 // Aggiungo l'even listener al bottone 
 btnPlay.addEventListener ('click', function(){
@@ -69,6 +79,9 @@ btnPlay.addEventListener ('click', function(){
         cell.addEventListener ('click', function(){
             cell.classList.toggle('bg-sky-blue');
             console.log(i);
+            userScore.push(i);
         });
     };
 });
+
+console.log(userScore);

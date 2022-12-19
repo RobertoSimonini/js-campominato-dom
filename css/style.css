@@ -29,7 +29,6 @@ header nav {
 .grid {
     width: 700px;
     height: 700px;
-    border: 0.5px solid black;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
