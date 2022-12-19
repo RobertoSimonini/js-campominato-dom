@@ -72,9 +72,16 @@ const bombsArray = [];
 
 // Aggiungo l'even listener al bottone 
 btnPlay.addEventListener ('click', function(){
+
+    // Cambio l'innertext al bottone una volta clickato 
+    btnPlay.innerText = 'Play again'
+
     // Aggiungo la classe al grid così da creare il container per il campo minato
     grid.classList.add('grid');
     
+    // do la possibilità di restartare senza creare una griglia sotto l'altra
+    grid.innerHTML = '';
+
     // Prendo il value della select 
     userChoice = select.value;
     
