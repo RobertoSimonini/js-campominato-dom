@@ -118,4 +118,3 @@ btnPlay.addEventListener ('click', function(){
     };
 });
 
-console.log(bombsArray);
