@@ -1,0 +1,65 @@
+/* Generics  */
+body {
+    background-color: #7a4ccf78;
+    font-family: sans-serif;
+}
+
+/* Header  */
+
+header nav {
+    height: 100px;
+    margin-bottom: 75px;
+    padding: 0 50px;
+}
+
+#title {
+    font-size: 35px;
+}
+
+#play {
+    padding: 10px 25px;
+}
+
+#userChoice {
+    padding: 13px;
+}
+
+
+/* Grid and cells  */
+.grid {
+    width: 700px;
+    height: 700px;
+    border: 0.5px solid black;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid > * {
+    border: 1px solid black;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cell {
+    height: 10%;
+    width: 10%;
+}
+
+.normal-cell {
+    height: calc(100% / 9);
+    width: calc(100% / 9);
+}
+
+.hard-cell {
+    height: calc(100% / 7);
+    width: calc(100% / 7);
+}
+
+.bg-sky-blue {
+    background-color: skyblue;
+}
