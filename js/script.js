@@ -69,10 +69,7 @@ function getUniqueRandomBomb () {
 
 // Creo un array dove metterò le 16 bombe
 const bombsArray = []
-// Creo il ciclo per creare i 16 numeri
-for (j = 1; j <= 16; j++) {
-    bombsArray.push(getUniqueRandomBomb())
-};
+
 
 console.log(bombsArray);
 
@@ -90,6 +87,11 @@ btnPlay.addEventListener ('click', function(){
     } else if (userChoice === 'hard') {
         totalCells = 49;
     }
+
+    // Creo il ciclo per creare i 16 numeri
+    for (j = 1; j <= 16; j++) {
+        bombsArray.push(getUniqueRandomBomb())
+    };
 
     for (let i = 1; i <= totalCells; i++) {
 
