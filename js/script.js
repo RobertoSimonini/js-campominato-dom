@@ -109,8 +109,10 @@ btnPlay.addEventListener ('click', function(){
             userScore.push(i);
 
             if (cell.classList.contains('bg-red')) {
-                alert (`Hai perso, hai schiacciato una bomba, il tuo risultato è ${userScore.length}`);
+                alert (`Hai perso, hai schiacciato una bomba, il tuo risultato è ${userScore.length - 1}`);
                 return;
+            } else if (userScore.length === (totalCells - bombsArray.length)) {
+                alert (`Complimenti hai vinto!! il tuo risultato è ${userScore.length}`)
             }
         });
     };
