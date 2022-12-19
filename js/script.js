@@ -57,6 +57,25 @@ function createCell (content) {
 // Creo un array che contenga il punteggio dell'utente 
 const userScore = [];
 
+// # Creao una funzione che mi permetta di generare 16 numeri random senza doppioni 
+function getUniqueRandomBomb () {
+    let randomNumber;
+    do{
+        randomNumber = Math.floor(Math.random() * totalCells) + 1;
+    }while (bombsArray.includes(randomNumber));
+
+    return randomNumber;
+}
+
+// Creo un array dove metterò le 16 bombe
+const bombsArray = []
+// Creo il ciclo per creare i 16 numeri
+for (j = 1; j <= 16; j++) {
+    bombsArray.push(getUniqueRandomBomb())
+};
+
+console.log(bombsArray);
+
 // Aggiungo l'even listener al bottone 
 btnPlay.addEventListener ('click', function(){
     // Aggiungo la classe al grid così da creare il container per il campo minato
@@ -73,15 +92,15 @@ btnPlay.addEventListener ('click', function(){
     }
 
     for (let i = 1; i <= totalCells; i++) {
+
         // Aggiungo la funzione che crei le celle e le appena nella griglia 
         const cell = createCell (i);
-        
+
         cell.addEventListener ('click', function(){
             cell.classList.toggle('bg-sky-blue');
-            console.log(i);
+            // Aggiungo la cella cliccata all'array dell'utente 
             userScore.push(i);
         });
     };
 });
 
-console.log(userScore);
